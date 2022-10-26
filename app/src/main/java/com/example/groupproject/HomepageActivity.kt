@@ -1,5 +1,6 @@
 package com.example.groupproject
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -34,7 +35,10 @@ class HomepageActivity : ComponentActivity() {
                         Row(horizontalArrangement = Arrangement.Center,modifier = Modifier
                             .padding(vertical = 32.dp, horizontal = 24.dp)
                             .fillMaxWidth()){
-                            Button(onClick = { /*TODO*/ }, modifier = Modifier
+                            Button(onClick = { /*TODO*/
+                                val loginActivity = Intent(this@HomepageActivity,LoginActivity::class.java)
+                                startActivity(loginActivity);
+                                             }, modifier = Modifier
                                 .fillMaxWidth(0.5f)
                                 .padding(horizontal = 8.dp)) {
                                 Text(text = stringResource(id = R.string.button_page_login), fontSize = 24.sp)
@@ -59,10 +63,12 @@ class HomepageActivity : ComponentActivity() {
                                 Text(text = stringResource(id = R.string.button_page_another), fontSize = 24.sp)
                             }
                         }
-                        Row(horizontalArrangement = Arrangement.Center,modifier = Modifier
+                        Row(horizontalArrangement = Arrangement.End,modifier = Modifier
                             .padding(vertical = 32.dp, horizontal = 24.dp)
                             .fillMaxWidth()){
+                            Button(onClick = { /*TODO*/ }) {
 
+                            }
                         }
                         Greeting2("Android")
                     }
