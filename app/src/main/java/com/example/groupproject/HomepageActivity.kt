@@ -1,5 +1,6 @@
 package com.example.groupproject
 
+import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -11,7 +12,6 @@ import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.modifier.modifierLocalConsumer
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -36,14 +36,15 @@ class HomepageActivity : ComponentActivity() {
                             .padding(vertical = 32.dp, horizontal = 24.dp)
                             .fillMaxWidth()){
                             Button(onClick = { /*TODO*/
-                                val loginActivity = Intent(this@HomepageActivity,LoginActivity::class.java)
-                                startActivity(loginActivity);
+                                             SetActivity(LoginActivity::class.java)
                                              }, modifier = Modifier
                                 .fillMaxWidth(0.5f)
                                 .padding(horizontal = 8.dp)) {
                                 Text(text = stringResource(id = R.string.button_page_login), fontSize = 24.sp)
                             }
-                            Button(onClick = { /*TODO*/ }, modifier = Modifier
+                            Button(onClick = { /*TODO*/
+
+                                             }, modifier = Modifier
                                 .fillMaxWidth()
                                 .padding(horizontal = 8.dp)) {
                                 Text(text = stringResource(id = R.string.button_page_schedule), fontSize = 24.sp)
@@ -52,7 +53,9 @@ class HomepageActivity : ComponentActivity() {
                         Row(horizontalArrangement = Arrangement.Center,modifier = Modifier
                             .padding(vertical = 32.dp, horizontal = 24.dp)
                             .fillMaxWidth()){
-                            Button(onClick = { /*TODO*/ }, modifier = Modifier
+                            Button(onClick = { /*TODO*/
+
+                                             }, modifier = Modifier
                                 .fillMaxWidth(0.5f)
                                 .padding(horizontal = 8.dp)) {
                                 Text(text = stringResource(id = R.string.button_page_todo), fontSize = 24.sp)
@@ -66,7 +69,9 @@ class HomepageActivity : ComponentActivity() {
                         Row(horizontalArrangement = Arrangement.End,modifier = Modifier
                             .padding(vertical = 32.dp, horizontal = 24.dp)
                             .fillMaxWidth()){
-                            Button(onClick = { /*TODO*/ }) {
+                            Button(onClick = {
+                                SetActivity(SettingsActivity::class.java)
+                            }) {
 
                             }
                         }
@@ -77,7 +82,14 @@ class HomepageActivity : ComponentActivity() {
             }
         }
     }
+
+    fun SetActivity(cls: Class<out Activity>){
+        val nextActivity = Intent(this@HomepageActivity,cls)
+        startActivity(nextActivity);
+    }
 }
+
+
 
 @Composable
 fun Greeting2(name: String) {

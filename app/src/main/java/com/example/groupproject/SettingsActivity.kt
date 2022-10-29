@@ -3,13 +3,15 @@ package com.example.groupproject
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Surface
-import androidx.compose.material.Text
+import androidx.compose.foundation.layout.*
+import androidx.compose.material.*
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.example.groupproject.ui.theme.GroupProjectTheme
 
 class SettingsActivity : ComponentActivity() {
@@ -22,9 +24,46 @@ class SettingsActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
-                    Greeting4("Android")
+                    Column(modifier = Modifier.fillMaxHeight()) {
+                        Row(horizontalArrangement = Arrangement.Center,modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(horizontal = 12.dp, vertical = 8.dp)) {
+                            Text(text = stringResource(id = R.string.title_activity_settings), fontSize = 32.sp)
+                        }
+                        Row(horizontalArrangement = Arrangement.Center,modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(horizontal = 12.dp, vertical = 8.dp)) {
+                            TextField(value = "", onValueChange = {}, placeholder = {
+                                Row(horizontalArrangement = Arrangement.Center, modifier = Modifier.fillMaxWidth()) {
+                                    Text(text = stringResource(id = R.string.button_settings_searchbar), fontSize = 16.sp)
+                                }
+                            })
+                        }
+                        ButtonRow(stringResource(id = R.string.button_settings_account))
+                        ButtonRow(stringResource(id = R.string.button_settings_appearance))
+                        ButtonRow(stringResource(id = R.string.button_settings_general))
+                        ButtonRow(stringResource(id = R.string.button_settings_preferences))
+
+                    }
+
+
+
+
+
+
                 }
             }
+        }
+    }
+}
+
+@Composable
+fun ButtonRow(name: String){
+    Row(horizontalArrangement = Arrangement.Center,modifier = Modifier
+        .fillMaxWidth()
+        .padding(horizontal = 12.dp, vertical = 8.dp)) {
+        Button(onClick = { /*TODO*/ }, modifier = Modifier.fillMaxWidth()) {
+            Text(text = name)
         }
     }
 }
