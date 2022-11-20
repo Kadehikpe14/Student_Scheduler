@@ -1,10 +1,12 @@
 package com.example.groupproject.newscheduleitem
 
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.*
 import androidx.compose.material.Checkbox
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.dp
 
 @Composable
 fun DaySelector(
@@ -13,27 +15,46 @@ fun DaySelector(
 ){
     if(!isOnline){
         Column{
-            Row{
+            Row(
+                verticalAlignment = Alignment.CenterVertically,
+                modifier = Modifier.padding(5.dp)
+            ){
                 Text("Monday")
-                Checkbox(checked = false, onCheckedChange = {})
+                Spacer(modifier = Modifier.weight(1f))
+                Checkbox(checked = false, onCheckedChange = {}/*toggleDay(validDay.MONDAY) */)
         }
-            Row{
+            Row(
+                verticalAlignment = Alignment.CenterVertically,
+                modifier = Modifier.padding(5.dp)
+            ){
                 Text("Tuesday")
-                Checkbox(checked = false, onCheckedChange = {})
+                Spacer(modifier = Modifier.weight(1f))
+                Checkbox(checked = false, onCheckedChange = {}/*toggleDay(validDay.TUESDAY) */)
         }
-            Row{
+            Row(
+                verticalAlignment = Alignment.CenterVertically,
+                modifier = Modifier.padding(5.dp)
+            ){
                 Text("Wednesday")
-                Checkbox(checked = false, onCheckedChange = {})
+                Spacer(modifier = Modifier.weight(1f))
+                Checkbox(checked = false, onCheckedChange = {}/*toggleDay(validDay.WEDNESDAY) */)
         }
-    }
-        Column{
-            Row{
+
+            Row(
+                verticalAlignment = Alignment.CenterVertically,
+                modifier = Modifier.padding(5.dp)
+            ){
                 Text("Thursday")
-                Checkbox(checked = false, onCheckedChange = {})
+                Spacer(modifier = Modifier.weight(1f))
+                Checkbox(checked = false, onCheckedChange = {}/*toggleDay(validDay.THURSDAY) */)
             }
-            Row{
+            Row(
+                verticalAlignment = Alignment.CenterVertically,
+                modifier = Modifier.padding(5.dp)
+            ){
                 Text("Friday")
-                Checkbox(checked = false, onCheckedChange = {})
+                Spacer(modifier = Modifier.weight(1f))
+                Checkbox(checked = false, onCheckedChange = {}/*toggleDay(validDay.FRIDAY) */)
             }
         }
     }
