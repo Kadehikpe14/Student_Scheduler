@@ -1,9 +1,6 @@
 package com.example.groupproject
 
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Card
 import androidx.compose.material.Text
@@ -25,6 +22,9 @@ fun ScheduleRow(
             horizontalArrangement = Arrangement.SpaceEvenly
         ){
             Text(item.className)
+            Spacer(modifier = Modifier
+                .weight(1f)
+            )
             Text(item.location)
         }
     }

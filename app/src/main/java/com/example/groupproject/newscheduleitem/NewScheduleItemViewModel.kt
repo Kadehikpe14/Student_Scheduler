@@ -65,12 +65,12 @@ class NewScheduleItemViewModel: ViewModel() {
         }
 
     }
-    fun getScheduleItem(): scheduleItem{
+    fun getScheduleItem(): scheduleItem?{
         if(classname.value.isEmpty()) throw Exception("No classname given")
         if(location.value.isEmpty()) throw Exception("No location given")
         if(!isOnline.value && daysholder.value.size == 1) throw Exception("No days selected")
-
-        return scheduleItem(classname.value, isOnline.value, days.value, timeBlock.value, location.value)
+        return null;
+        //return scheduleItem(classname.value, isOnline.value, days.value, timeBlock.value, location.value)
     }
     //TODO() add all the shit
 }
