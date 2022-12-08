@@ -2,6 +2,7 @@ package com.example.groupproject
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.*
@@ -30,54 +31,52 @@ class HomepageActivity : ComponentActivity() {
                 ) {
                     Column(modifier = Modifier.padding(horizontal = 8.dp, vertical = 12.dp)){
                         Row(horizontalArrangement = Arrangement.Center,modifier = Modifier.fillMaxWidth()) {
-
+                            Spacer(modifier = Modifier.fillMaxWidth().height(64.dp))
                         }
                         Row(horizontalArrangement = Arrangement.Center,modifier = Modifier
-                            .padding(vertical = 32.dp, horizontal = 24.dp)
+                            .padding(vertical = 8.dp, horizontal = 24.dp)
                             .fillMaxWidth()){
-                            Button(onClick = { /*TODO*/
-                                val loginActivity = Intent(this@HomepageActivity,LoginActivity::class.java)
-                                startActivity(loginActivity);
-                                             }, modifier = Modifier
-                                .fillMaxWidth(0.5f)
-                                .padding(horizontal = 8.dp)) {
-                                Text(text = stringResource(id = R.string.button_page_login), fontSize = 24.sp)
-                            }
-                            Button(onClick = { /*TODO*/ }, modifier = Modifier
-                                .fillMaxWidth()
-                                .padding(horizontal = 8.dp)) {
-                                Text(text = stringResource(id = R.string.button_page_schedule), fontSize = 24.sp)
-                            }
+                            PageButton(labelLang = R.string.button_page_login,LoginActivity::class.java,Modifier.weight(1.0f))
+                            PageButton(labelLang = R.string.button_page_schedule,ScheduleActivity::class.java,Modifier.weight(1.0f))
                         }
                         Row(horizontalArrangement = Arrangement.Center,modifier = Modifier
-                            .padding(vertical = 32.dp, horizontal = 24.dp)
+                            .padding(vertical = 8.dp, horizontal = 24.dp)
                             .fillMaxWidth()){
-                            Button(onClick = { /*TODO*/ }, modifier = Modifier
-                                .fillMaxWidth(0.5f)
-                                .padding(horizontal = 8.dp)) {
-                                Text(text = stringResource(id = R.string.button_page_todo), fontSize = 24.sp)
-                            }
-                            Button(onClick = { /*TODO*/ }, modifier = Modifier
-                                .fillMaxWidth()
-                                .padding(horizontal = 8.dp)) {
-                                Text(text = stringResource(id = R.string.button_page_another), fontSize = 24.sp)
-                            }
+                            PageButton(labelLang = R.string.button_page_todo, page = TodoActivity::class.java,Modifier.weight(1.0f))
+                            PageButton(labelLang = R.string.button_page_another, page = TodoActivity::class.java,Modifier.weight(1.0f))
                         }
                         Row(horizontalArrangement = Arrangement.End,modifier = Modifier
-                            .padding(vertical = 32.dp, horizontal = 24.dp)
+                            .padding(vertical = 8.dp, horizontal = 24.dp)
                             .fillMaxWidth()){
-                            Button(onClick = { /*TODO*/ }) {
+                            Button(onClick = {
+                                val settingsActivity = Intent(this@HomepageActivity,SettingsActivity::class.java)
+                                startActivity(settingsActivity)
+                            }) {
 
                             }
                         }
-                        Greeting2("Android")
                     }
 
                 }
             }
         }
     }
+
+    @Composable
+    fun PageButton(labelLang: Int,page: Class<out ComponentActivity>,modifier: Modifier = Modifier){
+        Button(onClick = {
+            val activity = Intent(this@HomepageActivity,page)
+            startActivity(activity);
+        }, modifier = modifier
+            .height(128.dp)
+            .padding(horizontal = 8.dp)) {
+            Text(text = stringResource(id = labelLang), fontSize = 24.sp)
+        }
+    }
+
 }
+
+
 
 @Composable
 fun Greeting2(name: String) {
