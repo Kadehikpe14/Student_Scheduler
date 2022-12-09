@@ -12,6 +12,7 @@ import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.modifier.modifierLocalConsumer
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
@@ -31,7 +32,9 @@ class HomepageActivity : ComponentActivity() {
                 ) {
                     Column(modifier = Modifier.padding(horizontal = 8.dp, vertical = 12.dp)){
                         Row(horizontalArrangement = Arrangement.Center,modifier = Modifier.fillMaxWidth()) {
-                            Spacer(modifier = Modifier.fillMaxWidth().height(64.dp))
+                            Spacer(modifier = Modifier
+                                .fillMaxWidth()
+                                .height(64.dp))
                         }
                         Row(horizontalArrangement = Arrangement.Center,modifier = Modifier
                             .padding(vertical = 8.dp, horizontal = 24.dp)
@@ -52,7 +55,7 @@ class HomepageActivity : ComponentActivity() {
                                 val settingsActivity = Intent(this@HomepageActivity,SettingsActivity::class.java)
                                 startActivity(settingsActivity)
                             }) {
-
+                                Text(text = "Settings")
                             }
                         }
                     }

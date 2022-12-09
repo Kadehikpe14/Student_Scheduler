@@ -76,11 +76,8 @@ fun TodoList(
             .padding(horizontal = 12.dp, vertical = 8.dp)) {
             Text(text = stringResource(id = R.string.title_activity_settings), fontSize = 32.sp)
             Spacer(modifier = Modifier.width(32.dp))
-            Button(onClick = {
-                onClear();
-            }) {
-
-            }
+            Button(onClick = { onClear()})
+            { Text(text = "Delete") }
         }
         LazyColumn(){
             itemsIndexed(list){
@@ -141,8 +138,6 @@ fun AddField(
 
         }
     }
-
-
 }
 
 @Composable
