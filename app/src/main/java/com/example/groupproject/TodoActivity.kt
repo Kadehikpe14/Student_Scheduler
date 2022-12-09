@@ -19,6 +19,8 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHost
+import androidx.navigation.NavHostController
 import com.example.groupproject.ui.theme.GroupProjectTheme
 import com.example.groupproject.util.TodoItem
 
@@ -36,26 +38,41 @@ class TodoActivity : ComponentActivity() {
                     )}
                     val mutableTodo = remember{ mutableStateOf(originalTodo) }
                     val addBar = remember{ mutableStateOf("")};
-                    TodoList(list = mutableTodo.value, onClear = {
-                        mutableTodo.value = mutableTodo.value.filter {
-                            todoItem -> !todoItem.checked
+                    Scaffold(
+                        topBar = {
+                            Row(horizontalArrangement = Arrangement.Center,modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(horizontal = 12.dp, vertical = 8.dp)) {
+                                Text(text = stringResource(id = R.string.title_activity_todo), fontSize = 32.sp)
+                                Spacer(modifier = Modifier.width(32.dp))
+                                Button(onClick = {
+                                    mutableTodo.value = mutableTodo.value.filter {
+                                            todoItem -> !todoItem.checked
+                                    }
+                                }) {
+
+                                }
+                            }
                         }
-                    }, onChange = {
-                        idx, checked ->
-                        mutableTodo.value = mutableTodo.value.mapIndexed() {
-                            i, todo ->
-                            if(i==idx)
-                                return@mapIndexed todo.copy(checked = checked)
-                            todo
-                        }
-                    }, onAdd = {
-                        if(addBar.value!=""){
-                            mutableTodo.value = mutableTodo.value.plus(TodoItem(addBar.value,false))
-                            addBar.value = ""
-                        }
+                    ){
+                        TodoList(list = mutableTodo.value, onChange = {
+                                idx, checked ->
+                            mutableTodo.value = mutableTodo.value.mapIndexed() {
+                                    i, todo ->
+                                if(i==idx)
+                                    return@mapIndexed todo.copy(checked = checked)
+                                todo
+                            }
+                        }, onAdd = {
+                            if(addBar.value!=""){
+                                mutableTodo.value = mutableTodo.value.plus(TodoItem(addBar.value,false))
+                                addBar.value = ""
+                            }
 
 
-                    }, addBar = addBar)
+                        }, addBar = addBar)
+                    }
+
                 }
             }
         }
@@ -65,23 +82,11 @@ class TodoActivity : ComponentActivity() {
 @Composable
 fun TodoList(
     list: List<TodoItem>,
-    onClear: ()->Unit,
     onChange: (Int, Boolean)->Unit,
     addBar: MutableState<String>,
     onAdd: ()->Unit
 ){
     Column(modifier = Modifier.fillMaxHeight()) {
-        Row(horizontalArrangement = Arrangement.Center,modifier = Modifier
-            .fillMaxWidth()
-            .padding(horizontal = 12.dp, vertical = 8.dp)) {
-            Text(text = stringResource(id = R.string.title_activity_settings), fontSize = 32.sp)
-            Spacer(modifier = Modifier.width(32.dp))
-            Button(onClick = {
-                onClear();
-            }) {
-
-            }
-        }
         LazyColumn(){
             itemsIndexed(list){
                 idx, todoItem ->
@@ -130,7 +135,7 @@ fun AddField(
                 OutlinedTextField(value = addBar.value, modifier = Modifier.fillMaxWidth(0.9f), onValueChange = {
                         newval -> addBar.value = newval
                 }, placeholder = {
-                    Text(text = stringResource(id = R.string.button_settings_searchbar))
+                    Text(text = stringResource(id = R.string.button_todo_addbar))
                 })
                 Button(onClick = {
                     onAdd();
