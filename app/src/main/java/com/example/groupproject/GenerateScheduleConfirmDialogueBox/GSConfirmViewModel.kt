@@ -19,9 +19,6 @@ class GSConfirmViewModel: ViewModel() {
     fun showConfirmGenerate(onConfirm: () -> Unit){
         _showConfirmDialog.value = true
         _onConfirm = onConfirm
-        //if(_onConfirm == onConfirm){
-          //  println("True")
-        //}
     }
 
     fun setTUID(UID: String){
@@ -29,7 +26,6 @@ class GSConfirmViewModel: ViewModel() {
     }
 
     fun onConfirmGenerate() {
-        //TODO() why this?
         if(_onConfirm != null){
             _showConfirmDialog.value = false
             _onConfirm?.invoke()
