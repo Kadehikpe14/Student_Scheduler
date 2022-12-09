@@ -46,7 +46,7 @@ class HomepageActivity : ComponentActivity() {
                             .padding(vertical = 8.dp, horizontal = 24.dp)
                             .fillMaxWidth()){
                             PageButton(labelLang = R.string.button_page_todo, page = TodoActivity::class.java,Modifier.weight(1.0f))
-                            PageButton(labelLang = R.string.button_page_another, page = TodoActivity::class.java,Modifier.weight(1.0f))
+                            PageButton(labelLang = R.string.button_page_another, page = EventsActivity::class.java,Modifier.weight(1.0f))
                         }
                         Row(horizontalArrangement = Arrangement.End,modifier = Modifier
                             .padding(vertical = 8.dp, horizontal = 24.dp)

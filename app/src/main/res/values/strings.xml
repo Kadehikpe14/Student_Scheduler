@@ -24,4 +24,5 @@
     <string name="button_settings_searchbar">Search Bar</string>
     <string name="button_todo_addbar">Add an item</string>
     <string name="title_activity_schedule">ScheduleActivity</string>
+    <string name="title_activity_events">EventsActivity</string>
 </resources>
