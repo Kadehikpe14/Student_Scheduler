@@ -21,6 +21,11 @@ import androidx.compose.ui.unit.sp
 import com.example.groupproject.ui.theme.GroupProjectTheme
 
 class HomepageActivity : ComponentActivity() {
+
+    //TODO: Refactor folders
+
+    //TODO: Navigation combines Homepage, Settings, and About
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {

@@ -15,6 +15,9 @@ import androidx.compose.ui.unit.sp
 import com.example.groupproject.ui.theme.GroupProjectTheme
 
 class SettingsActivity : ComponentActivity() {
+
+    //TODO: naviagtion to the about page
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {

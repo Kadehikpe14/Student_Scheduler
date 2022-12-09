@@ -48,28 +48,7 @@ class MainActivity : ComponentActivity() {
         }
     }
 }
-@Composable
-fun MainScreen(
-    schedule: List<scheduleItem>?,
-    getSchedule: () -> Unit,
-){
-    if(schedule == null){
-        Column{
-            Text("There's nothing here")
-            Button(onClick = getSchedule){
-                Text("Import Schedule")
-            }
-        }
-    }
-    else{
-        LazyColumn {
-            itemsIndexed(schedule) {idx, scheduleItem ->
-                ScheduleRow(scheduleItem)
-            }
-        }
-    }
 
-}
 @Composable
 fun Greeting(name: String) {
     Text(text = "Hello $name!")
