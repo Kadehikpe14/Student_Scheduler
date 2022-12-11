@@ -1,11 +1,11 @@
 package com.example.groupproject
 
+//import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.text.ClickableText
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -27,7 +27,7 @@ class LoginActivity : ComponentActivity() {
                     color = MaterialTheme.colors.background) {
                     Scaffold(
                         topBar = { TopAppBar(
-                            title = {Text("Please Login", color = Color.White)},
+                            title = {Text("Please Login", fontSize = 30.sp, color = Color.White)},
                             backgroundColor = Color(0xFF0718C4)
                         ) },
                         content = {
@@ -43,6 +43,7 @@ class LoginActivity : ComponentActivity() {
                                 TextRow(text = stringResource(id = R.string.inform_prompt_password))
                                 FieldRow()
                                 EmptyRow()
+                                Login()
                                 HyperTextRow(text = stringResource(id = R.string.inform_login_forgotinfo))
                                 HyperTextRow(text = stringResource(id = R.string.inform_login_signup))
                             }
@@ -63,12 +64,14 @@ fun HyperTextRow(text: String){
 }
 
 @Composable
-fun ButtonRow(){
+fun Login(){
     Row(horizontalArrangement = Arrangement.Center,modifier = Modifier
         .fillMaxWidth()
         .padding(8.dp)) {
-        Button(onClick = { /*TODO*/ }) {
-            Text(text = stringResource(id = R.string.button_function_login), fontSize = 28.sp)
+        Button(onClick = {/*TODO make the login button go to homepage*/ },
+            colors = ButtonDefaults.buttonColors(backgroundColor = Color(0xFFE47001))
+        ) {
+            Text(text = stringResource(id = R.string.button_function_login), fontSize = 28.sp, color = Color.White)
         }
     }
 }

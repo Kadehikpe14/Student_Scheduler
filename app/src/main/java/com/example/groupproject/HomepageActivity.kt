@@ -2,7 +2,6 @@ package com.example.groupproject
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.*
@@ -10,7 +9,6 @@ import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.modifier.modifierLocalConsumer
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -33,7 +31,7 @@ class HomepageActivity : ComponentActivity() {
                     color = MaterialTheme.colors.background) {
                     Scaffold(
                         topBar = { TopAppBar(
-                            title = {Text("Welcome to Student Scheduler", color = Color.White)},
+                            title = {Text("Welcome to Student Scheduler", fontSize = 25.sp, color = Color.White)},
                             backgroundColor = Color(0xFF0718C4))  },
                         content = {
                     Column(modifier = Modifier.padding(horizontal = 8.dp, vertical = 12.dp)){
@@ -59,9 +57,9 @@ class HomepageActivity : ComponentActivity() {
                             .fillMaxWidth()){
                             Button(onClick = {
                                 val settingsActivity = Intent(this@HomepageActivity,SettingsActivity::class.java)
-                                startActivity(settingsActivity)
-                            }) {
-                                Text(text = "Settings")
+                                startActivity(settingsActivity) },
+                                colors = ButtonDefaults.buttonColors(backgroundColor = Color(0xFFE47001))) {
+                                Text(text = "Settings",  color = Color.White, fontSize = 20.sp)
                             }
                         }
                     }
@@ -75,27 +73,19 @@ class HomepageActivity : ComponentActivity() {
     fun PageButton(labelLang: Int,page: Class<out ComponentActivity>,modifier: Modifier = Modifier){
         Button(onClick = {
             val activity = Intent(this@HomepageActivity,page)
-            startActivity(activity);
+            startActivity(activity)
         }, modifier = modifier
             .height(128.dp)
             .padding(horizontal = 8.dp)) {
-            Text(text = stringResource(id = labelLang), fontSize = 24.sp)
+            Text(text = stringResource(id = labelLang), fontSize = 25.sp)
         }
     }
 
 }
 
 
-
-@Composable
-fun Greeting2(name: String) {
-    Text(text = "Hello $name!")
-}
-
 @Preview(showBackground = true)
 @Composable
 fun DefaultPreview2() {
-    GroupProjectTheme {
-        Greeting2("Android")
-    }
+    GroupProjectTheme {}
 }

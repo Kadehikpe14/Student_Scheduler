@@ -19,6 +19,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.viewinterop.AndroidView
 
 import androidx.compose.material.Scaffold
+import androidx.compose.ui.unit.sp
 
 class EventsActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -30,10 +31,12 @@ class EventsActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
-                    MainContent()
-
-
-
+                    Scaffold(
+                        topBar = { TopAppBar(
+                            title = { Text("View Towson Events!", fontSize = 30.sp, color = Color.White) },
+                            backgroundColor = Color(4294885393)) },
+                        content = { MyContent()})
+                //TODO instead of having a webview to TU events, make multiple links they can view
                 }
             }
         }
@@ -41,17 +44,8 @@ class EventsActivity : ComponentActivity() {
 }
 
 @Composable
-fun MainContent() {
-    Scaffold(
-        topBar = { TopAppBar(
-            title = { Text("Involed at TU", color = Color.White) },
-            backgroundColor = Color(4294885393)) },
-        content = { MyContent() }
-    )
-}
-@Composable
 fun MyContent(){
-    val mUrl = "https://www.towson.edu/calendars/"
+    val url = "https://www.towson.edu/calendars/"
     AndroidView(factory = {
         WebView(it).apply {
             layoutParams = ViewGroup.LayoutParams(
@@ -59,22 +53,12 @@ fun MyContent(){
                 ViewGroup.LayoutParams.MATCH_PARENT
             )
             webViewClient = WebViewClient()
-            loadUrl(mUrl)
-        }
-    }, update = {
-        it.loadUrl(mUrl)
-    })
-}
-
-@Composable
-fun Greeting8(name: String) {
-    Text(text = "Welcome $name!!")
+            loadUrl(url)
+        }}, update = { it.loadUrl(url) })
 }
 
 @Preview(showBackground = true)
 @Composable
 fun DefaultPreview8() {
-    GroupProjectTheme {
-        Greeting8("User")
-    }
+    GroupProjectTheme {}
 }

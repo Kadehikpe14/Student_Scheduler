@@ -16,6 +16,7 @@ import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.sp
 import com.example.groupproject.GenerateScheduleConfirmDialogueBox.GSConfirmViewModel
 import com.example.groupproject.model.scheduleItem
 import com.example.groupproject.schedulelist.ScheduleListModel
@@ -34,7 +35,7 @@ class ScheduleActivity : ComponentActivity() {
                 ){
                     Scaffold(
                         topBar = { TopAppBar(
-                            title = {Text("Schedule", color = Color.White)},
+                            title = {Text("Schedule", fontSize = 30.sp, color = Color.White)},
                             backgroundColor = Color(0xFF0718C4)
                         ) },
                         content = {
