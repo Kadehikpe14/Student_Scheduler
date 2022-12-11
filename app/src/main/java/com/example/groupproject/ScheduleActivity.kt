@@ -9,14 +9,12 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.itemsIndexed
-import androidx.compose.material.Button
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Surface
-import androidx.compose.material.Text
+import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.groupproject.GenerateScheduleConfirmDialogueBox.GSConfirmViewModel
 import com.example.groupproject.model.scheduleItem
@@ -34,16 +32,24 @@ class ScheduleActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ){
-                    val vm: ScheduleListModel by viewModels()
-                    val schedule by vm.schedule
-                    val gsvm: GSConfirmViewModel by viewModels()
-                    ScheduleListView(schedule,
-                        getSchedule = vm::generateSchedule,
-                        gsvm
-                    )
-
+                    Scaffold(
+                        topBar = { TopAppBar(
+                            title = {Text("Schedule", color = Color.White)},
+                            backgroundColor = Color(0xFF0718C4)
+                        ) },
+                        content = {
+                            val vm: ScheduleListModel by viewModels()
+                            val schedule by vm.schedule
+                            val gsvm: GSConfirmViewModel by viewModels()
+                            ScheduleListView(
+                                schedule,
+                                getSchedule = vm::generateSchedule,
+                                gsvm
+                            )
+                        })
                     //NewScheduleItemView() //delete this function after initial commit
                 }
+
             }
         }
     }

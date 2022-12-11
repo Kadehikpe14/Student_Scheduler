@@ -19,8 +19,6 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-//import androidx.navigation.NavHost
-//import androidx.navigation.NavHostController
 import com.example.groupproject.ui.theme.GroupProjectTheme
 import com.example.groupproject.util.TodoItem
 
@@ -32,9 +30,8 @@ class TodoActivity : ComponentActivity() {
                 // A surface container using the 'background' color from the theme
                 Surface(
                     modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colors.background
-                ) {
-                    val originalTodo = (0..20).map{ i -> TodoItem("make a "+i,i%3==0
+                    color = MaterialTheme.colors.background) {
+                    val originalTodo = (0..5).map{ i -> TodoItem("Make a "+i,i%3==0
                     )}
                     val mutableTodo = remember{ mutableStateOf(originalTodo) }
                     val addBar = remember{ mutableStateOf("")};
@@ -43,15 +40,13 @@ class TodoActivity : ComponentActivity() {
                             Row(horizontalArrangement = Arrangement.Center,modifier = Modifier
                                 .fillMaxWidth()
                                 .padding(horizontal = 12.dp, vertical = 8.dp)) {
-                                Text(text = stringResource(id = R.string.title_activity_todo), fontSize = 32.sp)
+                                Text(text = "To-Do List", fontSize = 32.sp)
                                 Spacer(modifier = Modifier.width(32.dp))
-                                Button(onClick = {
-                                    mutableTodo.value = mutableTodo.value.filter {
+                                
+                                Button(onClick = { mutableTodo.value = mutableTodo.value.filter {
                                             todoItem -> !todoItem.checked
                                     }
-                                }) {
-
-                                }
+                                }) { Text(text = "Delete")}
                             }
                         }
                     ){
@@ -68,8 +63,6 @@ class TodoActivity : ComponentActivity() {
                                 mutableTodo.value = mutableTodo.value.plus(TodoItem(addBar.value,false))
                                 addBar.value = ""
                             }
-
-
                         }, addBar = addBar)
                     }
 
@@ -143,7 +136,6 @@ fun AddField(
 
                 }
             }
-
         }
     }
 

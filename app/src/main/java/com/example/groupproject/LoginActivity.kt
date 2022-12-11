@@ -9,6 +9,7 @@ import androidx.compose.foundation.text.ClickableText
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -23,18 +24,29 @@ class LoginActivity : ComponentActivity() {
                 // A surface container using the 'background' color from the theme
                 Surface(
                     modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colors.background
-                ) {
-                    Column(modifier = Modifier.padding(horizontal = 24.dp, vertical = 48.dp)){
-                        TextRow(text = stringResource(id = R.string.inform_prompt_username))
-                        FieldRow()
-                        EmptyRow()
-                        TextRow(text = stringResource(id = R.string.inform_prompt_password))
-                        FieldRow()
-                        EmptyRow()
-                        HyperTextRow(text = stringResource(id = R.string.inform_login_forgotinfo))
-                        HyperTextRow(text = stringResource(id = R.string.inform_login_signup))
-                    }
+                    color = MaterialTheme.colors.background) {
+                    Scaffold(
+                        topBar = { TopAppBar(
+                            title = {Text("Please Login", color = Color.White)},
+                            backgroundColor = Color(0xFF0718C4)
+                        ) },
+                        content = {
+                            Column(
+                                modifier = Modifier.padding(
+                                    horizontal = 24.dp,
+                                    vertical = 48.dp
+                                )
+                            ) {
+                                TextRow(text = stringResource(id = R.string.inform_prompt_username))
+                                FieldRow()
+                                EmptyRow()
+                                TextRow(text = stringResource(id = R.string.inform_prompt_password))
+                                FieldRow()
+                                EmptyRow()
+                                HyperTextRow(text = stringResource(id = R.string.inform_login_forgotinfo))
+                                HyperTextRow(text = stringResource(id = R.string.inform_login_signup))
+                            }
+                        })
                 }
             }
         }
@@ -88,15 +100,8 @@ fun EmptyRow(){
     }
 }
 
-@Composable
-fun Greeting3(name: String) {
-    Text(text = "Hello $name!")
-}
-
 @Preview(showBackground = true)
 @Composable
 fun DefaultPreview3() {
-    GroupProjectTheme {
-        Greeting3("Android")
-    }
+    GroupProjectTheme {}
 }

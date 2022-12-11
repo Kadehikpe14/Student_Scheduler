@@ -6,10 +6,7 @@ import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.*
-import androidx.compose.material.Button
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Surface
-import androidx.compose.material.Text
+import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -34,7 +31,11 @@ class HomepageActivity : ComponentActivity() {
                 Surface(
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background) {
-
+                    Scaffold(
+                        topBar = { TopAppBar(
+                            title = {Text("Welcome to Student Scheduler", color = Color.White)},
+                            backgroundColor = Color(0xFF0718C4))  },
+                        content = {
                     Column(modifier = Modifier.padding(horizontal = 8.dp, vertical = 12.dp)){
                         Row(horizontalArrangement = Arrangement.Center,modifier = Modifier.fillMaxWidth()) {
                             Spacer(modifier = Modifier
@@ -64,7 +65,7 @@ class HomepageActivity : ComponentActivity() {
                             }
                         }
                     }
-
+                        })
                 }
             }
         }
