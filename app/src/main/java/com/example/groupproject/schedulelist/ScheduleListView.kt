@@ -38,6 +38,7 @@ fun ScheduleListView(
         }
     }
     else{
+        //TODO: Iterate through days and time blocks in a lazyrow/lazy column, add items accordingly
         LazyColumn {
             itemsIndexed(schedule) {idx, scheduleItem ->
                 ScheduleRow(scheduleItem)

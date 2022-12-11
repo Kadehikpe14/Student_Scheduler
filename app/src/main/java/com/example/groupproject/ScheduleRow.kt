@@ -29,3 +29,22 @@ fun ScheduleRow(
         }
     }
 }
+
+@Composable
+fun ScheduleRow(){
+    Card(
+        shape = RoundedCornerShape(5.dp),
+        modifier = Modifier.padding(start = 16.dp, end = 16.dp, top = 5.dp, bottom = 5.dp).fillMaxWidth()
+    )
+    {
+        Row(
+            horizontalArrangement = Arrangement.SpaceEvenly
+        ){
+            //Text(item.className)
+            Spacer(modifier = Modifier
+                .weight(1f)
+            )
+            //Text(item.location)
+        }
+    }
+}

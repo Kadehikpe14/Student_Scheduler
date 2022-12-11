@@ -15,6 +15,7 @@ fun GSConfirmDialogue(
 ){
     val show by vm.showConfirmDialog
     if(show){
+
         AlertDialog(onDismissRequest = { /*TODO*/ },
             title = { Text(title)},
             text = {Text(text)},
