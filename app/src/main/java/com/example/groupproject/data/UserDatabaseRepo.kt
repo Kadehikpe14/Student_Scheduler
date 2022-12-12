@@ -1,6 +1,5 @@
 package com.example.groupproject.data
 
-import android.app.Application
 import android.content.Context
 import androidx.room.Room
 import com.example.groupproject.model.user.User

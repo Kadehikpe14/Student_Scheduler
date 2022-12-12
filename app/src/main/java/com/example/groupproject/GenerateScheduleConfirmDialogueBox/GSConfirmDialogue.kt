@@ -1,7 +1,6 @@
 package com.example.groupproject.GenerateScheduleConfirmDialogueBox
 
-import android.content.Context
-import android.graphics.Color.RED
+
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.AlertDialog
@@ -14,10 +13,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.input.KeyboardType
-import com.example.groupproject.data.UserDatabaseRepo
 import com.example.groupproject.model.user.UserViewModel
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.launch
 
 @Composable
 fun GSConfirmDialogue(

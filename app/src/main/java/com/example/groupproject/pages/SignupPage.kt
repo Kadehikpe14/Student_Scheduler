@@ -1,20 +1,15 @@
 package com.example.groupproject.pages
 
-import android.app.Application
 import android.content.Context
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.Button
 import androidx.compose.material.OutlinedTextField
-import androidx.compose.material.TextField
-import androidx.lifecycle.viewModelScope
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Color.Companion.Red
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
@@ -25,7 +20,6 @@ import com.example.groupproject.model.user.User
 import com.example.groupproject.model.user.UserViewModel
 import com.example.groupproject.navigation.Routes
 import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.CoroutineScope.*
 import kotlinx.coroutines.launch
 import com.example.groupproject.R
 
