@@ -39,11 +39,10 @@ fun LoginPage(
             nav.navigate(Routes.HomePage.route) {
                 popUpTo(Routes.HomePage.route)
                 }
-
             }
         )
         {
-            Text("Login")
+            Text("Login", fontSize = 25.sp)
         }
 
         HyperTextRow(text = stringResource(id = R.string.inform_login_forgotinfo))
