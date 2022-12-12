@@ -13,6 +13,13 @@ The Student Scheduler allows students to sign up and log in to our application a
 Users can also use our To-Do List where they can add and delete items on their to do list and also search for specific to-do items.
 Users can also have direct access to the Towson Events page where they can search upcoming and live events.
 
+## Outside Resources
+Creating a login with room: https://medium.com/@umeshchandra1996/room-database-in-android-with-mvvm-6f238e14bcb1
+
+
+## Android Resources
+Room & Kapt, Navigation-Compose, Lifecycle
+
 ## Requirements
 This application can be run on Android devices with the update-to-date gradle scripts.
 
