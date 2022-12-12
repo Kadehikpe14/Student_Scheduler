@@ -32,28 +32,24 @@ fun HomePage(
 
         Row(horizontalArrangement = Arrangement.Center,
             modifier = Modifier
-            .padding(vertical = 8.dp, horizontal = 24.dp)
-            .fillMaxWidth()){
-            Text("Welcome " +  uservm._username.value + "!", fontSize = 28.sp)
-        }
+                .padding(vertical = 8.dp, horizontal = 24.dp)
+                .fillMaxWidth())
+        { Text("Welcome " +  uservm._username.value + "!", fontSize = 28.sp) }
+        Row(horizontalArrangement = Arrangement.Center,
+            modifier = Modifier
+                .padding(vertical = 8.dp, horizontal = 24.dp)
+                .fillMaxWidth())
+        { Text(uservm._tuid.value, fontSize = 28.sp) }
+
         Row(horizontalArrangement = Arrangement.Center,
             modifier = Modifier
                 .padding(vertical = 8.dp, horizontal = 24.dp)
                 .fillMaxWidth()){
-            Text(uservm._tuid.value, fontSize = 28.sp)
-        }
-
-        Row(horizontalArrangement = Arrangement.Center,
-            modifier = Modifier
-            .padding(vertical = 8.dp, horizontal = 24.dp)
-            .fillMaxWidth()){
             Button(onClick = {
                 nav.navigate(Routes.Settings.route) {
                     popUpTo(Routes.Settings.route)
-                }
-            }) {
-                Text(text = stringResource(id = R.string.title_activity_settings))
-            }
+                } })
+            { Text(text = stringResource(id = R.string.title_activity_settings)) }
         }
         Row(
             horizontalArrangement = Arrangement.Center,
@@ -77,11 +73,10 @@ fun HomePage(
                 uservm.logoutUser()
                 nav.navigate(Routes.Login.route) {
                     popUpTo(Routes.Login.route)
-                }
-            }) {
-                Text(text = stringResource(id = R.string.logout))
+                } })
+            { Text(text = stringResource(id = R.string.logout)) }
 
-            }
+            
         }
 
     }

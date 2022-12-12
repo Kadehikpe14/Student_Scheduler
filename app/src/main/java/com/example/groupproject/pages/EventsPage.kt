@@ -16,9 +16,7 @@ import com.example.groupproject.ui.theme.DarkBlue
 fun EventsPage(
     nav: NavHostController = rememberNavController()
 ){
-    Scaffold(
-        content = { MyContent() },
-    )}
+    Scaffold(content = { MyContent() },)}
 
 
 @Composable

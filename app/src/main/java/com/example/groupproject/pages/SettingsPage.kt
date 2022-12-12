@@ -7,23 +7,17 @@ import androidx.compose.material.TextField
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.*
 import com.example.groupproject.R
-import androidx.compose.ui.unit.sp
 @Composable
 fun SettingsPage(){
     Column(modifier = Modifier.fillMaxHeight()) {
         Row(horizontalArrangement = Arrangement.Center,modifier = Modifier
             .fillMaxWidth()
             .padding(horizontal = 12.dp, vertical = 8.dp)) {
-            Text("fix this shit")//text = stringResource(id = R.string.title_activity_settings), fontSize = 32.sp)
-        }
-        Row(horizontalArrangement = Arrangement.Center,modifier = Modifier
-            .fillMaxWidth()
-            .padding(horizontal = 12.dp, vertical = 8.dp)) {
             TextField(value = "", onValueChange = {}, placeholder = {
                 Row(horizontalArrangement = Arrangement.Center, modifier = Modifier.fillMaxWidth()) {
-                    Text("fix this shit")//text = stringResource(id = R.string.button_settings_searchbar), fontSize = 16.sp)
+                    Text("Search") //TODO allow it to search, but there's no other setting pages
                 }
             })
         }
@@ -31,7 +25,6 @@ fun SettingsPage(){
         ButtonRow(stringResource(id = R.string.button_settings_appearance))
         ButtonRow(stringResource(id = R.string.button_settings_general))
         ButtonRow(stringResource(id = R.string.button_settings_preferences))
-
     }
 }
 @Composable

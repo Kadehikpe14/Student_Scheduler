@@ -19,13 +19,13 @@ import com.example.groupproject.model.todolist.TodoItem
 
 @Composable
 fun TodoPage() {
-    val originalTodo = (0..20).map { i ->
+    val originalTodo = (0..10).map { i -> //TODO we don't need 20 todo, we need to show the add function
         TodoItem(
             "Make a " + i, false
         )
     }
     val mutableTodo = remember { mutableStateOf(originalTodo) }
-    val addBar = remember { mutableStateOf("") };
+    val addBar = remember { mutableStateOf("") }
     Scaffold(
         topBar = {
             Row(
@@ -45,7 +45,7 @@ fun TodoPage() {
         }
     ) {
             TodoList(list = mutableTodo.value, onChange = { idx, checked ->
-                mutableTodo.value = mutableTodo.value.mapIndexed() { i, todo ->
+                mutableTodo.value = mutableTodo.value.mapIndexed { i, todo ->
                     if (i == idx)
                         return@mapIndexed todo.copy(isChecked = checked)
                     todo
@@ -69,7 +69,7 @@ fun TodoList(
     Box(contentAlignment = Alignment.Center) {
         Column(modifier = Modifier
             ) {
-            LazyColumn() {
+            LazyColumn {
                 itemsIndexed(list) { idx, todoItem ->
                     Card(
                         shape = RoundedCornerShape(4.dp),
@@ -96,7 +96,7 @@ fun TodoList(
                     }
                 }
                 item {
-                    Row() {
+                    Row {
                         AddField(addBar = addBar, onAdd = onAdd)
                     }
                     //this row is simply to so that the bottom bar doesn't cover the add
@@ -121,7 +121,7 @@ fun AddField(
             modifier = Modifier
                 .padding(4.dp)
                 .fillMaxWidth(0.75f)) {
-            Row() {
+            Row {
                 OutlinedTextField(value = addBar.value,
                     modifier = Modifier.fillMaxWidth(0.9f),
                     onValueChange = {
@@ -130,7 +130,7 @@ fun AddField(
                     Text(text = stringResource(id = com.example.groupproject.R.string.button_todo_addbar))
                 })
                 Button(onClick = {
-                    onAdd();
+                    onAdd()
                 }) {
 
                 }
