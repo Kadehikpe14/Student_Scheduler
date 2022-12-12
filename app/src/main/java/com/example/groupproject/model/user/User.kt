@@ -13,8 +13,4 @@ data class User(
     val password: String,
     @ColumnInfo
     val TUID: String,
-){
-    //I kept getting an error about a constructor,
-    // so that's why this is here
-    constructor(): this("","","")
-}
+){}
