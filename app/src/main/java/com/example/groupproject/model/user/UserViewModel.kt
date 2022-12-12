@@ -24,4 +24,9 @@ class UserViewModel: ViewModel() {
     fun loginUser(username: String, password: String) {
 
     }
+    fun setUser(user: User){
+        _username.value = user.username
+        _tuid.value = user.TUID
+        _isLoggedIn.value = true
+    }
 }

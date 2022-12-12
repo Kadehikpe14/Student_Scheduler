@@ -18,6 +18,7 @@ import androidx.navigation.compose.rememberNavController
 import com.example.groupproject.model.user.UserViewModel
 import com.example.groupproject.navigation.Routes
 import com.example.groupproject.navigation.ScheduleNavGraph
+import kotlinx.coroutines.CoroutineScope
 
 
 @OptIn(ExperimentalComposeUiApi::class,
@@ -27,7 +28,8 @@ import com.example.groupproject.navigation.ScheduleNavGraph
 //added context for intent in "Home" page
 fun MainScreen(
     app: Context,
-    uservm: UserViewModel
+    uservm: UserViewModel,
+    coroutineScope: CoroutineScope
 )
 {
     val nav = rememberNavController()
@@ -44,7 +46,7 @@ fun MainScreen(
             }
         }
     ){
-        ScheduleNavGraph(nav, app, uservm)
+        ScheduleNavGraph(nav, app, uservm, coroutineScope)
     }
 }
 

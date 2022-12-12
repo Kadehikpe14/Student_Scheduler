@@ -5,7 +5,6 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 
-//TODO() add database functionality, add reminders?
 @Entity(tableName = "users")
 data class User(
     @PrimaryKey
@@ -14,4 +13,6 @@ data class User(
     val password: String,
     @ColumnInfo
     val TUID: String
-)
+){
+    constructor(): this("","","")
+}

@@ -20,7 +20,7 @@ class UserDatabaseRepo(app: Context) {
             .fallbackToDestructiveMigration()
             .build()
     }
-    suspend fun getUser(username: String){
+    suspend fun getUser(username: String): User{
         return db.usersDao().getUser(username)
     }
     suspend fun addUser(user: User){

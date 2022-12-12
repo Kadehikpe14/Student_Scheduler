@@ -8,8 +8,8 @@ import com.example.groupproject.model.user.User
 //TODO does dao need to be suspend?
 @Dao
 interface UserDao{
-    @Query("SELECT * FROM users WHERE username = users.username")
-    suspend fun getUser(username: String)
+    @Query("SELECT * FROM users WHERE users.username like :username")
+    suspend fun getUser(username: String): User
     @Insert
     suspend fun addUser(user: User)
 

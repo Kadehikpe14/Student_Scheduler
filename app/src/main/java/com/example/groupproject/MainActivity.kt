@@ -6,6 +6,7 @@ import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.groupproject.model.user.UserViewModel
@@ -21,8 +22,9 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ){
+                    var coroutineScope = rememberCoroutineScope()
                     var uservm: UserViewModel = viewModel()
-                    MainScreen(act,uservm)
+                    MainScreen(act,uservm, coroutineScope)
                 }
             }
         }

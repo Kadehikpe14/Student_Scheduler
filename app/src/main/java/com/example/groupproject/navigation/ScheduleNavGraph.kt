@@ -13,6 +13,7 @@ import com.example.groupproject.GenerateScheduleConfirmDialogueBox.GSConfirmView
 import com.example.groupproject.model.schedulelist.ScheduleListModel
 import com.example.groupproject.model.user.UserViewModel
 import com.example.groupproject.pages.*
+import kotlinx.coroutines.CoroutineScope
 
 @ExperimentalComposeUiApi
 @ExperimentalFoundationApi
@@ -20,7 +21,8 @@ import com.example.groupproject.pages.*
 fun ScheduleNavGraph(
     navController: NavHostController = rememberNavController(),
     app: Context,
-    uservm: UserViewModel
+    uservm: UserViewModel,
+    coroutineScope: CoroutineScope
 ){
     NavHost(
         navController = navController,
@@ -33,8 +35,8 @@ fun ScheduleNavGraph(
             AboutPage()
         }
         composable(Routes.Login.route){
-            //SignupPage(uservm, app)
-            LoginPage(navController,uservm)
+            SignupPage(navController,uservm, app,coroutineScope)
+            //LoginPage(navController,uservm)
         }
         composable(Routes.Schedule.route){
             val scheduleListViewModel: ScheduleListModel = viewModel()
