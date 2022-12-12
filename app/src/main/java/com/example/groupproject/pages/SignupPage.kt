@@ -14,11 +14,12 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.Color.Companion.Red
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.lifecycle.AndroidViewModel
 import androidx.navigation.NavHostController
-import androidx.room.util.TableInfo
 import com.example.groupproject.data.UserDatabaseRepo
 import com.example.groupproject.model.user.User
 import com.example.groupproject.model.user.UserViewModel
@@ -26,8 +27,9 @@ import com.example.groupproject.navigation.Routes
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.CoroutineScope.*
 import kotlinx.coroutines.launch
+import com.example.groupproject.R
 
-//TODO replace hardcoded with res
+
 @Composable
 fun SignupPage(
     nav: NavHostController,
@@ -46,15 +48,15 @@ fun SignupPage(
         horizontalAlignment = Alignment.CenterHorizontally,
         modifier = Modifier.fillMaxWidth()) {
 
-        Text("Signup Page",
+        Text(text = stringResource(id = R.string.signup),
             fontSize = 36.sp,
             modifier = Modifier.padding(36.dp))
-        Text("Username", fontSize = 28.sp)
+        Text(text = stringResource(id = R.string.inform_prompt_username), fontSize = 28.sp)
         OutlinedTextField(value = username.value,
             onValueChange = {newvalue: String ->
                 username.value = newvalue
         })
-        Text("Password", fontSize = 28.sp)
+        Text(text = stringResource(id = R.string.inform_prompt_password), fontSize = 28.sp)
         OutlinedTextField(value = password.value,
             onValueChange = {newvalue: String ->
                 password.value = newvalue
@@ -64,7 +66,7 @@ fun SignupPage(
             onValueChange = {newvalue: String ->
                 password2.value = newvalue
             })
-        Text(errorMsg.value)
+        Text(errorMsg.value, color = Red, fontSize = 16.sp)
         //Check if user in database/add user to database
         Button(onClick = {
                     //coroutinescope passed from main activity
@@ -93,7 +95,7 @@ fun SignupPage(
                 }
             }}
         }){
-            Text("Signup")
+            Text(text = stringResource(id = R.string.signup))
         }
 
 

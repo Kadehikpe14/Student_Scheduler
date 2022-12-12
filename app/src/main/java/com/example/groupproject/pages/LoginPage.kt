@@ -24,7 +24,6 @@ import com.example.groupproject.model.user.UserViewModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 
-//TODO fix string resources
 @Composable
 fun LoginPage(
     nav: NavHostController = rememberNavController(),
@@ -60,7 +59,7 @@ fun LoginPage(
             onValueChange = {newvalue: String ->
                 password.value = newvalue
             })
-        Text(errorMsg.value)
+        Text(errorMsg.value, color = androidx.compose.ui.graphics.Color.Red, fontSize = 16.sp)
 
         Button(onClick = {
             //launch scope for database ops
