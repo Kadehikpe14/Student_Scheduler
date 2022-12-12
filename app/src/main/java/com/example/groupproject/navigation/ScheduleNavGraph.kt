@@ -35,8 +35,10 @@ fun ScheduleNavGraph(
             AboutPage()
         }
         composable(Routes.Login.route){
-            SignupPage(navController,uservm, app,coroutineScope)
-            //LoginPage(navController,uservm)
+            LoginPage(navController,uservm,coroutineScope, app)
+        }
+        composable(Routes.Signup.route){
+            SignupPage(nav = navController, uservm = uservm, app = app, coroutineScope = coroutineScope)
         }
         composable(Routes.Schedule.route){
             val scheduleListViewModel: ScheduleListModel = viewModel()

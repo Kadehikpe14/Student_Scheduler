@@ -28,4 +28,6 @@
     <string name="schedule">Schedule</string>
     <string name="todos">Todo</string>
     <string name="events">Events</string>
+    <string name = "signup">Signup</string>
+    <string name = "login">Login</string>
 </resources>

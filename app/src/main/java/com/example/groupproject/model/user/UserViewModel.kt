@@ -21,9 +21,7 @@ class UserViewModel: ViewModel() {
     init {
 
     }
-    fun loginUser(username: String, password: String) {
 
-    }
     fun setUser(user: User){
         _username.value = user.username
         _tuid.value = user.TUID

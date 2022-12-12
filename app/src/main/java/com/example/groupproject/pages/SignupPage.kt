@@ -27,7 +27,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.CoroutineScope.*
 import kotlinx.coroutines.launch
 
-
+//TODO replace hardcoded with res
 @Composable
 fun SignupPage(
     nav: NavHostController,
@@ -70,24 +70,24 @@ fun SignupPage(
                     //coroutinescope passed from main activity
                     //because I couldn't think of a better way to do it
                     coroutineScope.launch{
-                    val userrepo = UserDatabaseRepo(app)
-                    var user2: User = userrepo.getUser(username.value)
+                        val userrepo = UserDatabaseRepo(app)
+                        var user2: User = userrepo.getUser(username.value)
                         //If username not found, display error message
-                    if(user2!= null){
-                        errorMsg.value = "User already exists"
+                        if(user2!= null){
+                            errorMsg.value = "User already exists"
 
             }       //if user doesn't exist, make sure passwords are same
                     //if passwords same, add user to repo and navigate to home
-                    else{
-                        if(password.value != password2.value){
-                            errorMsg.value = "Passwords don't match"
+                        else{
+                            if(password.value != password2.value){
+                                errorMsg.value = "Passwords don't match"
                 }
-                        else {
-                            var newUser = User(username.value, password.value, "")
-                            userrepo.addUser(newUser)
-                            uservm.setUser(newUser)
-                            nav.navigate(Routes.HomePage.route) {
-                                popUpTo(Routes.HomePage.route)
+                            else {
+                                var newUser = User(username.value, password.value, "")
+                                userrepo.addUser(newUser)
+                                uservm.setUser(newUser)
+                                nav.navigate(Routes.HomePage.route) {
+                                    popUpTo(Routes.HomePage.route)
                             }
 
                 }
