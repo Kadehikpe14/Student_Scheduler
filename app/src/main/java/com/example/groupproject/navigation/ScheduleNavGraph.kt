@@ -46,7 +46,6 @@ fun ScheduleNavGraph(
             EventsPage()
         }
         composable(Routes.Todo.route){
-            //todo go back to todopage
             TodoPage()
         }
         composable(Routes.Settings.route){

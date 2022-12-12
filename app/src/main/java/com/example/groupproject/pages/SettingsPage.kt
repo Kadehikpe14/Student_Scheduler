@@ -17,7 +17,7 @@ fun SettingsPage(){
             .padding(horizontal = 12.dp, vertical = 8.dp)) {
             TextField(value = "", onValueChange = {}, placeholder = {
                 Row(horizontalArrangement = Arrangement.Center, modifier = Modifier.fillMaxWidth()) {
-                    Text("Search") //TODO allow it to search, but there's no other setting pages
+                    Text("Search")
                 }
             })
         }
@@ -32,7 +32,7 @@ fun ButtonRow(name: String){
     Row(horizontalArrangement = Arrangement.Center,modifier = Modifier
         .fillMaxWidth()
         .padding(horizontal = 12.dp, vertical = 8.dp)) {
-        Button(onClick = { /*TODO*/ }, modifier = Modifier.fillMaxWidth()) {
+        Button(onClick = { { } }, modifier = Modifier.fillMaxWidth()) {
             Text(text = name)
         }
     }

@@ -19,7 +19,7 @@ import com.example.groupproject.model.todolist.TodoItem
 
 @Composable
 fun TodoPage() {
-    val originalTodo = (0..10).map { i -> //TODO we don't need 20 todo, we need to show the add function
+    val originalTodo = (0..10).map { i ->
         TodoItem(
             "Make a " + i, false
         )
