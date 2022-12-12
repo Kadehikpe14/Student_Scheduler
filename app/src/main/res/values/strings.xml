@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Group Project</string>
+    <string name="app_name">Schedule Maker</string>
     <string name="title_activity_homepage">Homepage</string>
     <string name="title_activity_login">Login</string>
     <string name="title_activity_settings">Settings</string>
@@ -25,4 +25,7 @@
     <string name="button_todo_addbar">Add an item</string>
     <string name="title_activity_schedule">ScheduleActivity</string>
     <string name="title_activity_events">EventsActivity</string>
+    <string name="schedule">Schedule</string>
+    <string name="todos">Todo</string>
+    <string name="events">Events</string>
 </resources>

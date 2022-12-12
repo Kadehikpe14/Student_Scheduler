@@ -40,7 +40,11 @@ fun ScheduleListView(
             itemsIndexed(schedule) {idx, scheduleItem ->
                 ScheduleRow(scheduleItem)
             }
+
+
         }
+        //this row is simply to so that the bottom bar doesn't content
+        Row(modifier = Modifier.padding(vertical = 28.dp)){}
     }
 
 }
@@ -51,17 +55,29 @@ fun ScheduleRow(
 ){
     Card(
         shape = RoundedCornerShape(5.dp),
-        modifier = Modifier.padding(start = 16.dp, end = 16.dp, top = 5.dp, bottom = 5.dp).fillMaxWidth()
+        modifier = Modifier
+            .padding(10.dp)
+            .fillMaxWidth()
     )
     {
+    Column {
         Row(
-            horizontalArrangement = Arrangement.SpaceEvenly
-        ){
+            horizontalArrangement = Arrangement.SpaceEvenly,
+            modifier = Modifier.padding(12.dp)
+        ) {
             Text(item.className)
-            Spacer(modifier = Modifier
-                .weight(1f)
+            Spacer(
+                modifier = Modifier
+                    .weight(1f)
             )
             Text(item.location)
         }
+        Row(
+            modifier = Modifier.padding(12.dp)
+        ) {
+            Text(item.day + ":   ")
+            Text(item.time)
+        }
+    }
     }
 }

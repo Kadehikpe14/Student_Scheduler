@@ -20,9 +20,9 @@ import com.example.groupproject.util.TodoItem
 
 @Composable
 fun TodoPage() {
-    val originalTodo = (0..5).map { i ->
+    val originalTodo = (0..20).map { i ->
         TodoItem(
-            "Make a " + i, i % 3 == 0
+            "Make a " + i, false
         )
     }
     val mutableTodo = remember { mutableStateOf(originalTodo) }
@@ -45,18 +45,20 @@ fun TodoPage() {
             }
         }
     ) {
-        TodoList(list = mutableTodo.value, onChange = { idx, checked ->
-            mutableTodo.value = mutableTodo.value.mapIndexed() { i, todo ->
-                if (i == idx)
-                    return@mapIndexed todo.copy(checked = checked)
-                todo
-            }
-        }, onAdd = {
-            if (addBar.value != "") {
-                mutableTodo.value = mutableTodo.value.plus(TodoItem(addBar.value, false))
-                addBar.value = ""
-            }
-        }, addBar = addBar)
+        Box {
+            TodoList(list = mutableTodo.value, onChange = { idx, checked ->
+                mutableTodo.value = mutableTodo.value.mapIndexed() { i, todo ->
+                    if (i == idx)
+                        return@mapIndexed todo.copy(checked = checked)
+                    todo
+                }
+            }, onAdd = {
+                if (addBar.value != "") {
+                    mutableTodo.value = mutableTodo.value.plus(TodoItem(addBar.value, false))
+                    addBar.value = ""
+                }
+            }, addBar = addBar)
+        }
     }
 }
 @Composable
@@ -65,38 +67,47 @@ fun TodoList(
     onChange: (Int, Boolean)->Unit,
     addBar: MutableState<String>,
     onAdd: ()->Unit
-){
-    Column(modifier = Modifier.fillMaxHeight()) {
-        LazyColumn(){
-            itemsIndexed(list){
-                    idx, todoItem ->
-                Card(shape = RoundedCornerShape(4.dp),
-                    elevation = 8.dp,
-                    modifier = Modifier
-                        .padding(4.dp)
-                        .fillMaxWidth()){
-                    Row(verticalAlignment = Alignment.CenterVertically){
-                        Column(horizontalAlignment = Alignment.Start, modifier = Modifier.fillMaxWidth(0.9f)) {
-                            Text(todoItem.name)
-                        }
-                        Column(horizontalAlignment = Alignment.End) {
-                            Checkbox(checked = todoItem.checked, onCheckedChange = {
-                                onChange(idx,!todoItem.checked)
-                            })
+) {
+    Box(contentAlignment = Alignment.Center) {
+        Column(modifier = Modifier
+            ) {
+            LazyColumn() {
+                itemsIndexed(list) { idx, todoItem ->
+                    Card(
+                        shape = RoundedCornerShape(4.dp),
+                        elevation = 8.dp,
+                        modifier = Modifier
+                            .padding(4.dp)
+                            .fillMaxWidth()
+                    ) {
+                        Row(verticalAlignment = Alignment.CenterVertically) {
+                            Column(
+                                horizontalAlignment = Alignment.Start,
+                                modifier = Modifier.fillMaxWidth(0.9f)
+                            ) {
+                                Text(todoItem.name)
+                            }
+                            Column(horizontalAlignment = Alignment.End) {
+                                Checkbox(checked = todoItem.checked, onCheckedChange = {
+                                    onChange(idx, !todoItem.checked)
+                                })
+                            }
+
                         }
 
                     }
+                }
+                item {
+                    Row() {
+                        AddField(addBar = addBar, onAdd = onAdd)
+                    }
+                    //this row is simply to so that the bottom bar doesn't cover the add
+                    Row(modifier = Modifier.padding(vertical = 28.dp)){}
+                }
 
-                }
-            }
-            item {
-                Row() {
-                    AddField(addBar = addBar, onAdd= onAdd)
-                }
             }
 
         }
-
     }
 }
 
@@ -105,14 +116,17 @@ fun AddField(
     addBar: MutableState<String>,
     onAdd: ()->Unit
 ){
-    Row( modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.Center) {
+    Row( modifier = Modifier.fillMaxWidth(),
+        horizontalArrangement = Arrangement.Center) {
         Card(shape = RoundedCornerShape(4.dp),
             elevation = 4.dp,
             modifier = Modifier
                 .padding(4.dp)
                 .fillMaxWidth(0.75f)) {
             Row() {
-                OutlinedTextField(value = addBar.value, modifier = Modifier.fillMaxWidth(0.9f), onValueChange = {
+                OutlinedTextField(value = addBar.value,
+                    modifier = Modifier.fillMaxWidth(0.9f),
+                    onValueChange = {
                         newval -> addBar.value = newval
                 }, placeholder = {
                     Text(text = stringResource(id = com.example.groupproject.R.string.button_todo_addbar))

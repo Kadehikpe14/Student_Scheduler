@@ -15,10 +15,12 @@ class ScheduleListModel : ViewModel()  {
     }
 
     fun generateSchedule(){
-        val className = listOf("Databases", "Mobile App Development", "Web Development", "Requirements Analysis")
-        val location = listOf("YR303", "YR402", "YR205", "YR303")
-        _schedule.value = (0..3).map{i ->
-            scheduleItem(className[i], location[i])
+        val className = listOf("Databases", "Mobile App Development", "Web Development", "Requirements Analysis", "Statistics")
+        val location = listOf("YR303", "YR402", "YR205", "YR303", "YR105")
+        val days = listOf("Wed", "Mon", "Tues", "MonWed", "TuesThurs")
+        val times = listOf("7:00pm", "7:00pm", "7:00pm", "12:30pm", "1:45pm")
+        _schedule.value = (0..4).map{i ->
+            scheduleItem(className[i], days[i], times[i], location[i])
         }
     }
 }

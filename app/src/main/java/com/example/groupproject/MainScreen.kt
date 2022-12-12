@@ -11,6 +11,7 @@ import androidx.compose.material.icons.filled.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
@@ -39,7 +40,7 @@ fun MainScreen(
         ScheduleNavGraph(nav, app)
     }
 }
-//TODO() Add home screen button to top app bar
+
 @Composable
 fun TopBar(
     nav: NavHostController
@@ -47,7 +48,7 @@ fun TopBar(
     TopAppBar(
         title = {
             Row{
-                Text("Schedule Maker")
+                Text(stringResource(id = R.string.app_name))
                 Spacer(
                     modifier = Modifier
                         .weight(1f)
@@ -81,11 +82,10 @@ fun BottomBar(
                 }
             },
             icon = {
-                //TODO change Icon
                 Icon(Icons.Default.DateRange, "")
             },
             label = {
-                Text("Schedule")
+                Text(stringResource(id = R.string.schedule))
             }
         )
         BottomNavigationItem(
@@ -96,11 +96,10 @@ fun BottomBar(
                 }
             },
             icon = {
-                //TODO change icon
                 Icon(Icons.Default.List,"")
             },
             label = {
-                Text("Todo")
+                Text(stringResource(id = R.string.todos))
             }
         )
         BottomNavigationItem(
@@ -109,11 +108,10 @@ fun BottomBar(
                 popUpTo(Routes.Events.route)
             }},
             icon = {
-                //TODO change icon
                 Icon(Icons.Default.Place, "")
             },
             label = {
-                Text("Events")
+                Text(stringResource(id = R.string.events))
             })
 
     }

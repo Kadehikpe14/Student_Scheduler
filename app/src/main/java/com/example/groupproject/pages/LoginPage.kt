@@ -31,15 +31,17 @@ fun LoginPage(
         TextRow(text = stringResource(id = R.string.inform_prompt_password))
         FieldRow()
         EmptyRow()
+
         Button(onClick = {
             nav.navigate(Routes.HomePage.route) {
                 popUpTo(Routes.HomePage.route)
-        }
-        }
+                }
+            }
         )
         {
             Text("Login")
         }
+
         HyperTextRow(text = stringResource(id = R.string.inform_login_forgotinfo))
         HyperTextRow(text = stringResource(id = R.string.inform_login_signup))
 }}
