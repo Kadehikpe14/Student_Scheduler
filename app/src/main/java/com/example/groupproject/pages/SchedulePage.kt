@@ -1,5 +1,6 @@
 package com.example.groupproject.pages
 
+import android.content.Context
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.lifecycle.viewmodel.compose.viewModel
@@ -9,19 +10,21 @@ import com.example.groupproject.GenerateScheduleConfirmDialogueBox.GSConfirmView
 import com.example.groupproject.model.schedulelist.ScheduleListModel
 import com.example.groupproject.model.schedulelist.ScheduleListView
 import com.example.groupproject.model.user.UserViewModel
+import kotlinx.coroutines.CoroutineScope
 
 @Composable
 fun SchedulePage(
     vm: ScheduleListModel = viewModel(),
     gsvm: GSConfirmViewModel = viewModel(),
     nav: NavHostController = rememberNavController(),
-    uservm: UserViewModel
+    uservm: UserViewModel,
+    app: Context,
+    coroutineScope: CoroutineScope
 ){
-    //TODO figure out this shit
     val schedule by vm.schedule
     ScheduleListView(schedule,
         getSchedule = vm::generateSchedule,
         gsvm,
-        uservm
+        uservm,
     )
 }

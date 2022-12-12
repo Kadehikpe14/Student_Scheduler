@@ -1,7 +1,6 @@
 package com.example.groupproject.pages
 
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.layout.R
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -15,7 +14,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.groupproject.util.TodoItem
+import com.example.groupproject.model.todolist.TodoItem
 
 
 @Composable
@@ -39,17 +38,16 @@ fun TodoPage() {
 
                 Button(onClick = {
                     mutableTodo.value = mutableTodo.value.filter { todoItem ->
-                        !todoItem.checked
+                        !todoItem.isChecked
                     }
                 }) { Text(text = "Delete") }
             }
         }
     ) {
-
             TodoList(list = mutableTodo.value, onChange = { idx, checked ->
                 mutableTodo.value = mutableTodo.value.mapIndexed() { i, todo ->
                     if (i == idx)
-                        return@mapIndexed todo.copy(checked = checked)
+                        return@mapIndexed todo.copy(isChecked = checked)
                     todo
                 }
             }, onAdd = {
@@ -88,8 +86,8 @@ fun TodoList(
                                 Text(todoItem.name)
                             }
                             Column(horizontalAlignment = Alignment.End) {
-                                Checkbox(checked = todoItem.checked, onCheckedChange = {
-                                    onChange(idx, !todoItem.checked)
+                                Checkbox(checked = todoItem.isChecked, onCheckedChange = {
+                                    onChange(idx, !todoItem.isChecked)
                                 })
                             }
 

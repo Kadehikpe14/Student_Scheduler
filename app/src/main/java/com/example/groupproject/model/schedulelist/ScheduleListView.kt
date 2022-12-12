@@ -1,5 +1,6 @@
 package com.example.groupproject.model.schedulelist
 
+import android.content.Context
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
@@ -14,6 +15,7 @@ import androidx.compose.ui.unit.dp
 import com.example.groupproject.GenerateScheduleConfirmDialogueBox.GSConfirmDialogue
 import com.example.groupproject.GenerateScheduleConfirmDialogueBox.GSConfirmViewModel
 import com.example.groupproject.model.user.UserViewModel
+import kotlinx.coroutines.CoroutineScope
 
 
 //TODO change schedule == null to tuid
@@ -22,10 +24,14 @@ fun ScheduleListView(
     schedule: List<scheduleItem>?,
     getSchedule: () -> Unit,
     gsvm: GSConfirmViewModel,
-    uservm: UserViewModel
+    uservm: UserViewModel,
+
     ){
-    GSConfirmDialogue(title = "Import", text = "Enter a TUID and click 'Import'", vm = gsvm)
-    if(schedule==null){
+    //if there are no items in schedule,
+    // display a button that prompts for TUID
+    // and generate a schedule
+    GSConfirmDialogue(title = "Import", text = "Enter a TUID and click 'Import'", vm = gsvm, uservm = uservm)
+    if(schedule == null){
         Column(
             horizontalAlignment = Alignment.CenterHorizontally,
             modifier = Modifier
@@ -38,6 +44,7 @@ fun ScheduleListView(
             }
         }
     }
+
     else{
         LazyColumn {
             itemsIndexed(schedule) {idx, scheduleItem ->

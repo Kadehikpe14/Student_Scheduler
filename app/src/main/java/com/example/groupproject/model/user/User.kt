@@ -3,8 +3,8 @@ package com.example.groupproject.model.user
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-
-
+//TODO added todoidx
+//Our users table
 @Entity(tableName = "users")
 data class User(
     @PrimaryKey
@@ -12,7 +12,9 @@ data class User(
     @ColumnInfo
     val password: String,
     @ColumnInfo
-    val TUID: String
+    val TUID: String,
 ){
+    //I kept getting an error about a constructor,
+    // so that's why this is here
     constructor(): this("","","")
 }

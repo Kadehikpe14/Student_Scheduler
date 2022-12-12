@@ -29,7 +29,7 @@ fun ScheduleNavGraph(
         startDestination = Routes.Login.route
     ){
         composable(Routes.HomePage.route){
-            HomePage(navController, app)
+            HomePage(navController, app, uservm)
         }
         composable(Routes.About.route){
             AboutPage()
@@ -43,13 +43,17 @@ fun ScheduleNavGraph(
         composable(Routes.Schedule.route){
             val scheduleListViewModel: ScheduleListModel = viewModel()
             val gsvm: GSConfirmViewModel = viewModel()
-            SchedulePage(scheduleListViewModel, gsvm, navController, uservm)
+            SchedulePage(scheduleListViewModel, gsvm, navController, uservm, app, coroutineScope)
         }
         composable(Routes.Events.route){
             EventsPage()
         }
         composable(Routes.Todo.route){
+            //todo go back to todopage
             TodoPage()
+        }
+        composable(Routes.Settings.route){
+            SettingsPage()
         }
     }
 }

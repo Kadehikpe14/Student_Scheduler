@@ -8,8 +8,6 @@ import androidx.lifecycle.ViewModel
 
 class GSConfirmViewModel: ViewModel() {
     private val _showConfirmDialog: MutableState<Boolean> = mutableStateOf(false)
-    //TODO() Make this generate with suspend and loader
-
     private var _onConfirm: (() -> Unit)? = null
     val showConfirmDialog: State<Boolean> = _showConfirmDialog
     //val _isWaiting from lab
