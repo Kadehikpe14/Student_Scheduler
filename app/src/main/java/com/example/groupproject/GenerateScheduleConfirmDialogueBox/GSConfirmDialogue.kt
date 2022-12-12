@@ -26,7 +26,8 @@ fun GSConfirmDialogue(
 ){
     val show by vm.showConfirmDialog
     if(show){
-
+        //show dialogue box that "imports" a schedule after
+        //user enters in TUID from prompt
         AlertDialog(onDismissRequest = {},
             title = { Text(title)},
             text = {Text(text)},

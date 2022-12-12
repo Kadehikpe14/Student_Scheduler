@@ -28,11 +28,14 @@ class UserViewModel: ViewModel() {
         var user = User(this._username.value, this._password.value, this._tuid.value)
         return user
     }
+    //sets user as null, since _isloggedin is false
+    //it will not show nav buttons on top/bottom bar
     fun logoutUser(){
         _username.value = ""
         _tuid.value = ""
         _isLoggedIn.value = false
     }
+    //sets user, for use with db.getUser
     fun setUser(user: User){
         _username.value = user.username
         _tuid.value = user.TUID

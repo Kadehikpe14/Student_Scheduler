@@ -16,10 +16,7 @@ import kotlinx.coroutines.CoroutineScope
 fun SchedulePage(
     vm: ScheduleListModel = viewModel(),
     gsvm: GSConfirmViewModel = viewModel(),
-    nav: NavHostController = rememberNavController(),
     uservm: UserViewModel,
-    app: Context,
-    coroutineScope: CoroutineScope
 ){
     val schedule by vm.schedule
     ScheduleListView(schedule,

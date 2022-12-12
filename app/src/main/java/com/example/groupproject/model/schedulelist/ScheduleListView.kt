@@ -18,7 +18,7 @@ import com.example.groupproject.model.user.UserViewModel
 import kotlinx.coroutines.CoroutineScope
 
 
-
+//TODO change schedule == null to tuid
 @Composable
 fun ScheduleListView(
     schedule: List<scheduleItem>?,

@@ -78,6 +78,7 @@ fun TopBar(
         }
     )
 }
+//where our main nav elements reside
 @Composable
 fun BottomBar(
     nav: NavHostController

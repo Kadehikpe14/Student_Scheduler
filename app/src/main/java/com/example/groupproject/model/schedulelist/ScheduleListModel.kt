@@ -13,7 +13,7 @@ class ScheduleListModel : ViewModel()  {
     init{
 
     }
-
+    //our fake "backend" db of classes
     fun generateSchedule(){
         val className = listOf("Databases", "Mobile App Development", "Web Development", "Requirements Analysis", "Statistics")
         val location = listOf("YR303", "YR402", "YR205", "YR303", "YR105")

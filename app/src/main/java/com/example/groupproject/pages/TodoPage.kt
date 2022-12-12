@@ -44,6 +44,7 @@ fun TodoPage() {
             }
         }
     ) {
+        //create a "to do list
             TodoList(list = mutableTodo.value, onChange = { idx, checked ->
                 mutableTodo.value = mutableTodo.value.mapIndexed { i, todo ->
                     if (i == idx)
@@ -70,6 +71,7 @@ fun TodoList(
         Column(modifier = Modifier
             ) {
             LazyColumn {
+                //example todos
                 itemsIndexed(list) { idx, todoItem ->
                     Card(
                         shape = RoundedCornerShape(4.dp),
