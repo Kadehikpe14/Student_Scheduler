@@ -1,9 +1,8 @@
-package com.example.groupproject.schedulelist
+package com.example.groupproject.model.schedulelist
 
 import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
-import com.example.groupproject.model.schedulelist.scheduleItem
 
 class ScheduleListModel : ViewModel()  {
     var origSchedule: List<scheduleItem>? = null
