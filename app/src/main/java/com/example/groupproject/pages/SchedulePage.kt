@@ -8,17 +8,20 @@ import androidx.navigation.compose.rememberNavController
 import com.example.groupproject.GenerateScheduleConfirmDialogueBox.GSConfirmViewModel
 import com.example.groupproject.model.schedulelist.ScheduleListModel
 import com.example.groupproject.model.schedulelist.ScheduleListView
+import com.example.groupproject.model.user.UserViewModel
 
 @Composable
 fun SchedulePage(
     vm: ScheduleListModel = viewModel(),
     gsvm: GSConfirmViewModel = viewModel(),
-    nav: NavHostController = rememberNavController()
+    nav: NavHostController = rememberNavController(),
+    uservm: UserViewModel
 ){
     //TODO figure out this shit
     val schedule by vm.schedule
     ScheduleListView(schedule,
         getSchedule = vm::generateSchedule,
-        gsvm
+        gsvm,
+        uservm
     )
 }

@@ -47,7 +47,7 @@ fun HomePage(
 
              */
         }
-        Row(horizontalArrangement = Arrangement.End,modifier = Modifier
+        Row(horizontalArrangement = Arrangement.Center,modifier = Modifier
             .padding(vertical = 8.dp, horizontal = 24.dp)
             .fillMaxWidth()){
             Button(onClick = {/*

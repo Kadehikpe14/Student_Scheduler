@@ -1,11 +1,12 @@
 package com.example.groupproject.data
 
 import android.app.Application
+import android.content.Context
 import androidx.room.Room
 import com.example.groupproject.model.user.User
 
 
-class UserDatabaseRepo(app: Application) {
+class UserDatabaseRepo(app: Context) {
 
     private val db: UserDatabase
 

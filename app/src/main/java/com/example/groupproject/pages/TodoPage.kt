@@ -45,7 +45,7 @@ fun TodoPage() {
             }
         }
     ) {
-        Box {
+
             TodoList(list = mutableTodo.value, onChange = { idx, checked ->
                 mutableTodo.value = mutableTodo.value.mapIndexed() { i, todo ->
                     if (i == idx)
@@ -58,7 +58,7 @@ fun TodoPage() {
                     addBar.value = ""
                 }
             }, addBar = addBar)
-        }
+
     }
 }
 @Composable

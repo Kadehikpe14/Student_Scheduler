@@ -11,6 +11,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.groupproject.GenerateScheduleConfirmDialogueBox.GSConfirmViewModel
 import com.example.groupproject.model.schedulelist.ScheduleListModel
+import com.example.groupproject.model.user.UserViewModel
 import com.example.groupproject.pages.*
 
 @ExperimentalComposeUiApi
@@ -18,7 +19,8 @@ import com.example.groupproject.pages.*
 @Composable
 fun ScheduleNavGraph(
     navController: NavHostController = rememberNavController(),
-    app: Context
+    app: Context,
+    uservm: UserViewModel
 ){
     NavHost(
         navController = navController,
@@ -31,12 +33,13 @@ fun ScheduleNavGraph(
             AboutPage()
         }
         composable(Routes.Login.route){
-            LoginPage(navController)
+            //SignupPage(uservm, app)
+            LoginPage(navController,uservm)
         }
         composable(Routes.Schedule.route){
             val scheduleListViewModel: ScheduleListModel = viewModel()
             val gsvm: GSConfirmViewModel = viewModel()
-            SchedulePage(scheduleListViewModel, gsvm)
+            SchedulePage(scheduleListViewModel, gsvm, navController, uservm)
         }
         composable(Routes.Events.route){
             EventsPage()

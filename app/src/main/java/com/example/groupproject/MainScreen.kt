@@ -15,6 +15,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
+import com.example.groupproject.model.user.UserViewModel
 import com.example.groupproject.navigation.Routes
 import com.example.groupproject.navigation.ScheduleNavGraph
 
@@ -25,25 +26,32 @@ import com.example.groupproject.navigation.ScheduleNavGraph
 
 //added context for intent in "Home" page
 fun MainScreen(
-    app: Context
+    app: Context,
+    uservm: UserViewModel
 )
 {
     val nav = rememberNavController()
     Scaffold(
         topBar = {
-            TopBar(nav)
+            TopBar(nav, uservm)
         },
         bottomBar = {
-            BottomBar(nav = nav)
+            if(uservm._isLoggedIn.value == false){
+
+            }
+            else {
+                BottomBar(nav = nav)
+            }
         }
     ){
-        ScheduleNavGraph(nav, app)
+        ScheduleNavGraph(nav, app, uservm)
     }
 }
 
 @Composable
 fun TopBar(
-    nav: NavHostController
+    nav: NavHostController,
+    uservm: UserViewModel
 ){
     TopAppBar(
         title = {
@@ -53,15 +61,16 @@ fun TopBar(
                     modifier = Modifier
                         .weight(1f)
                 )
-                Icon(Icons.Default.Home,
-                    contentDescription = null,
-                    modifier = Modifier
-                        .clickable {
-                            nav.navigate(Routes.HomePage.route) {
-                                popUpTo(Routes.HomePage.route)
+                if(uservm._isLoggedIn.value == true){
+                    Icon(Icons.Default.Home,
+                        contentDescription = null,
+                        modifier = Modifier
+                            .clickable {
+                                nav.navigate(Routes.HomePage.route) {
+                                    popUpTo(Routes.HomePage.route)
                             }
                         }
-                )
+                )}
 
             }
         }

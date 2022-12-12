@@ -15,11 +15,13 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.example.groupproject.navigation.Routes
 import com.example.groupproject.R
+import com.example.groupproject.model.user.UserViewModel
 
 //TODO fix string resources
 @Composable
 fun LoginPage(
-    nav: NavHostController = rememberNavController()
+    nav: NavHostController = rememberNavController(),
+    uservm: UserViewModel
 ){
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
@@ -33,9 +35,11 @@ fun LoginPage(
         EmptyRow()
 
         Button(onClick = {
+            uservm._isLoggedIn.value = true
             nav.navigate(Routes.HomePage.route) {
                 popUpTo(Routes.HomePage.route)
                 }
+
             }
         )
         {

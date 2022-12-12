@@ -13,16 +13,19 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.example.groupproject.GenerateScheduleConfirmDialogueBox.GSConfirmDialogue
 import com.example.groupproject.GenerateScheduleConfirmDialogueBox.GSConfirmViewModel
+import com.example.groupproject.model.user.UserViewModel
 
+
+//TODO change schedule == null to tuid
 @Composable
 fun ScheduleListView(
     schedule: List<scheduleItem>?,
     getSchedule: () -> Unit,
     gsvm: GSConfirmViewModel,
-
+    uservm: UserViewModel
     ){
     GSConfirmDialogue(title = "Import", text = "Enter a TUID and click 'Import'", vm = gsvm)
-    if(schedule == null){
+    if(schedule==null){
         Column(
             horizontalAlignment = Alignment.CenterHorizontally,
             modifier = Modifier
