@@ -2,13 +2,15 @@ package com.example.groupproject
 
 import android.content.Context
 import androidx.compose.foundation.ExperimentalFoundationApi
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Add
-import androidx.compose.material.icons.filled.Delete
-import androidx.compose.material.icons.filled.Home
+import androidx.compose.material.icons.filled.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.ExperimentalComposeUiApi
+import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
@@ -19,6 +21,8 @@ import com.example.groupproject.navigation.ScheduleNavGraph
 @OptIn(ExperimentalComposeUiApi::class,
     ExperimentalFoundationApi::class)
 @Composable
+
+//added context for intent in "Home" page
 fun MainScreen(
     app: Context
 )
@@ -26,7 +30,7 @@ fun MainScreen(
     val nav = rememberNavController()
     Scaffold(
         topBar = {
-            TopBar()
+            TopBar(nav)
         },
         bottomBar = {
             BottomBar(nav = nav)
@@ -37,9 +41,29 @@ fun MainScreen(
 }
 //TODO() Add home screen button to top app bar
 @Composable
-fun TopBar(){
+fun TopBar(
+    nav: NavHostController
+){
     TopAppBar(
-        title = {Text("Schedule Maker")}
+        title = {
+            Row{
+                Text("Schedule Maker")
+                Spacer(
+                    modifier = Modifier
+                        .weight(1f)
+                )
+                Icon(Icons.Default.Home,
+                    contentDescription = null,
+                    modifier = Modifier
+                        .clickable {
+                            nav.navigate(Routes.HomePage.route) {
+                                popUpTo(Routes.HomePage.route)
+                            }
+                        }
+                )
+
+            }
+        }
     )
 }
 @Composable
@@ -58,7 +82,7 @@ fun BottomBar(
             },
             icon = {
                 //TODO change Icon
-                Icon(Icons.Default.Home, "")
+                Icon(Icons.Default.DateRange, "")
             },
             label = {
                 Text("Schedule")
@@ -73,7 +97,7 @@ fun BottomBar(
             },
             icon = {
                 //TODO change icon
-                Icon(Icons.Default.Add, "")
+                Icon(Icons.Default.List,"")
             },
             label = {
                 Text("Todo")
@@ -86,7 +110,7 @@ fun BottomBar(
             }},
             icon = {
                 //TODO change icon
-                Icon(Icons.Default.Delete, "")
+                Icon(Icons.Default.Place, "")
             },
             label = {
                 Text("Events")
