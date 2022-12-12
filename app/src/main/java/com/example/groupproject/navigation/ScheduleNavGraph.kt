@@ -31,9 +31,6 @@ fun ScheduleNavGraph(
         composable(Routes.HomePage.route){
             HomePage(navController, app, uservm)
         }
-        composable(Routes.About.route){
-            AboutPage()
-        }
         composable(Routes.Login.route){
             LoginPage(navController,uservm,coroutineScope, app)
         }
